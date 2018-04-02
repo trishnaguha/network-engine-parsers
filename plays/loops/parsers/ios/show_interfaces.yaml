@@ -1,7 +1,7 @@
 ---
 - name: match sections
   pattern_match:
-    regex: "^\\S+ is up,"
+    regex: "^(\\S+) is up,"
     match_all: yes
     match_greedy: yes
   register: context
@@ -10,7 +10,7 @@
   pattern_group:
     - name: match name
       pattern_match:
-        regex: "^\\S+ is up,"
+        regex: "^(\\S+)"
         contents: "{{ item }}"
       register: name
 
