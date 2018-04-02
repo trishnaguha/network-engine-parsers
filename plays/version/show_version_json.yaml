@@ -1,0 +1,20 @@
+---
+- name: parser meta data
+  parser_metadata:
+    version: 1.0
+    command: show version | json
+    network_os: eos
+
+- name: export system facts to playbook
+  set_vars:
+    system_mac: "{{ contents.systemMacAddress }}"
+    version:
+      string: "{{ contents.version }}"
+      major: "{{ contents.version.split('.')[0] }}"
+      minor: "{{ contents.version.split('.')[1] }}"
+      maint: "{{ contents.version.split('.')[2] }}"
+    memory:
+      total: "{{ contents.memTotal }}"
+      free_mem: "{{ contents.memFree }}"
+  export: yes
+  register: system

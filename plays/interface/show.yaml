@@ -1,0 +1,19 @@
+---
+- hosts: ios01
+  connection: network_cli
+
+  vars_files:
+    - ../ios.yaml
+
+  roles:
+    - ../network-engine
+
+  tasks:
+    - text_parser:
+        file: parsers/ios/show_interface.yaml
+        contents: "{{ lookup('file', 'output/ios/show_interface.txt') }}"
+
+        #- name: run and parse commands
+        #cli:
+        #command: show interface GigabitEthernet0/0
+        #parser: show_interface.yaml

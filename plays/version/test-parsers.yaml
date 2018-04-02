@@ -1,0 +1,24 @@
+---
+- hosts: veos02
+  connection: network_cli
+  gather_facts: no
+  become_method: enable
+
+  vars:
+    ansible_network_os: eos
+    parsers:
+    - command: show version
+      parser: show_version.yaml
+    - command: show version | json
+      parser: show_version_json.yaml
+
+  roles:
+    - ../network-engine
+
+  tasks:
+    - name: run and parse commands
+      cli:
+        command: "{{ item.command }}"
+        parser: "{{ item.parser }}"
+      loop: "{{ parsers }}"
+

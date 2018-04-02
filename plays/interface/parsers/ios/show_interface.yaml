@@ -1,0 +1,49 @@
+---
+#- name: parse metadata
+#  parser_metadata:
+#    version: 1.0
+#    command: show interface GigabitEthernet0/0
+#    network_os: ios
+
+- name: match sections
+  pattern_match:
+    regex: "^(\\S+)"
+  register: interface
+
+- name: match hardware
+  pattern_match:
+    regex: "Hardware is (\\S+),"
+  register: type
+
+- name: match mtu
+  pattern_match:
+    regex: "MTU (\\d+)"
+  register: mtu
+
+- name: match description
+  pattern_match:
+    regex: "Description: (.*)"
+  register: description
+
+#- name: export interface facts to playbook
+#  set_vars:
+#    interface: "{{ interface.matches.0 }}"
+#    type: "{{ type.matches.0 }}"
+#    mtu: "{{ mtu.matches.0 }}"
+#    description: "{{ description.matches.0 }}"
+#  export: yes
+#  register: interfacefacts
+
+- name: export as json template
+  json_template:
+    template:
+      - key: interface
+        value: "{{ interface.matches.0 }}"
+      - key: type
+        value: "{{ type.matches.0 }}"
+      - key: mtu
+        value: "{{ mtu.matches.0 }}"
+      - key: description
+        value: "{{ description.matches.0 }}"
+  export: yes
+  register: interfacefacts
