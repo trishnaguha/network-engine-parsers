@@ -8,9 +8,9 @@
     ansible_network_os: eos
     parsers:
     - command: show version
-      parser: show_version.yaml
+      parser: parsers/eos/show_version.yaml
     - command: show version | json
-      parser: show_version_json.yaml
+      parser: parsers/eos/show_version_json.yaml
 
   roles:
     - ../network-engine
