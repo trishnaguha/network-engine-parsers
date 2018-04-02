@@ -3,10 +3,10 @@
   connection: network_cli
 
   vars_files:
-    - ../ios.yaml
+    - ../group_vars/ios.yaml
 
   roles:
-    - ../network-engine
+    - network-engine
 
   tasks:
     - text_parser:

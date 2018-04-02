@@ -1,4 +1,5 @@
 *ansible.cfg
 *inventory
-*.swp
-*.retry
+*swp
+.*.swp
+*retry
