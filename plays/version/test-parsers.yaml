@@ -13,7 +13,7 @@
       parser: parsers/eos/show_version_json.yaml
 
   roles:
-    - network-engine
+    - ../network-engine
 
   tasks:
     - name: run and parse commands

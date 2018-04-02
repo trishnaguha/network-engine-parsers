@@ -25,14 +25,14 @@
     regex: "Description: (.*)"
   register: description
 
-#- name: export interface facts to playbook
-#  set_vars:
-#    interface: "{{ interface.matches.0 }}"
-#    type: "{{ type.matches.0 }}"
-#    mtu: "{{ mtu.matches.0 }}"
-#    description: "{{ description.matches.0 }}"
-#  export: yes
-#  register: interfacefacts
+- name: export interface facts to playbook
+  set_vars:
+    interface: "{{ interface.matches.0 }}"
+    type: "{{ type.matches.0 }}"
+    mtu: "{{ mtu.matches.0 }}"
+    description: "{{ description.matches.0 }}"
+  export: yes
+  register: interfacefacts
 
 - name: export as json template
   json_template:
@@ -46,4 +46,4 @@
       - key: description
         value: "{{ description.matches.0 }}"
   export: yes
-  register: interfacefacts
+  register: interfacefactstmpl

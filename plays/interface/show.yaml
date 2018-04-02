@@ -6,7 +6,7 @@
     - ../group_vars/ios.yaml
 
   roles:
-    - network-engine
+    - ../network-engine
 
   tasks:
     - text_parser:
