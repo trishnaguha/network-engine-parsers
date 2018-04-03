@@ -1,0 +1,15 @@
+---
+- hosts: nxos
+  connection: network_cli
+
+  vars_files:
+    - ../../group_vars/nxos.yaml
+
+  roles:
+    - ~/RHWork/network-engine
+
+  tasks:
+    - name: Parse from contents and generate json structure
+      textfsm:
+        file: parsers/nxos/show_vlan.yaml
+        contents: "{{ lookup('file', 'output/nxos/show_vlan.txt') }}"
