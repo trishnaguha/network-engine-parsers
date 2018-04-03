@@ -42,5 +42,5 @@
     memory:
       total: "{{ total_mem.matches.0 }}"
       free_mem: "{{ free_mem.matches.0 }}"
-  export: yes
+      export: yes
   register: system

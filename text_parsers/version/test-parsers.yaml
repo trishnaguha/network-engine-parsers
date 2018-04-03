@@ -1,5 +1,5 @@
 ---
-- hosts: veos02
+- hosts: eos
   connection: network_cli
   gather_facts: no
   become_method: enable
@@ -13,7 +13,7 @@
       parser: parsers/eos/show_version_json.yaml
 
   roles:
-    - ../network-engine
+    - ~/RHWork/network-engine
 
   tasks:
     - name: run and parse commands

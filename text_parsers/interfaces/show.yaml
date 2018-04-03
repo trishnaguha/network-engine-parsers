@@ -1,0 +1,21 @@
+---
+- hosts: ios
+  connection: network_cli
+
+  vars_files:
+    - ../../group_vars/ios.yaml
+
+  roles:
+    - ~/RHWork/network-engine
+
+  tasks:
+    - name: Parse from contents and generate json structure
+      text_parser:
+        file: parsers/ios/show_interfaces.yaml
+        contents: "{{ lookup('file', 'output/ios/show_interfaces.txt') }}"
+
+    #- name: Run and Parse command
+    #  cli:
+    #    command: show interface
+    #    parser: parsers/ios/show_interfaces.yaml
+    #    engine: text_parser
