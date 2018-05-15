@@ -13,3 +13,4 @@
       textfsm:
         file: parsers/nxos/show_vlan.yaml
         contents: "{{ lookup('file', 'output/nxos/show_vlan.txt') }}"
+        name: nxos_vlan

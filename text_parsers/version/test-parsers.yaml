@@ -5,7 +5,7 @@
   become_method: enable
 
   vars:
-    ansible_network_os: eos
+      #ansible_network_os: eos
     parsers:
     - command: show version
       parser: parsers/eos/show_version.yaml
@@ -21,4 +21,6 @@
         command: "{{ item.command }}"
         parser: "{{ item.parser }}"
       loop: "{{ parsers }}"
+      vars:
+        - ansible_network_os: eos
 

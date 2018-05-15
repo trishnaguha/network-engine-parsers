@@ -1,0 +1,19 @@
+Last login: Thu Apr  5 05:25:48 2018 from 10.10.120.53
+Warning: the following filesystems have less than 10% free space left:
+tmpfs                (on /var/log)      0% (0 Available)
+Please remove configuration such as tracing and clean up the space.
+eos02#show version
+Arista vEOS
+Hardware version:    
+Serial number:       
+System MAC address:  0050.5679.c2cc
+
+Software image version: 4.15.9M
+Architecture:           i386
+Internal build version: 4.15.9M-3616928.4159M
+Internal build ID:      2e7d16d4-0088-48b4-bd8a-ee9892b3e1ce
+
+Uptime:                 4 weeks, 5 days, 11 hours and 31 minutes
+Total memory:           3895852 kB
+Free memory:            940144 kB
+

@@ -1,18 +1,23 @@
 ---
-- hosts: ios
-  connection: network_cli
+- hosts: localhost
+  connection: local
 
-  vars_files:
-    - ../../group_vars/ios.yaml
+  #vars:
+  #  - ansible_network_os: ios
 
   roles:
     - ~/RHWork/network-engine
 
   tasks:
-    - name: Parse from contents and generate json structure
+  - name: Parse from contents and generate json structure
       text_parser:
         file: parsers/ios/show_interfaces.yaml
         contents: "{{ lookup('file', 'output/ios/show_interfaces.txt') }}"
+      register: result
+      vars:
+        - ansible_network_os: ios
+
+    - debug: var=result
 
     #- name: Run and Parse command
     #  cli:
